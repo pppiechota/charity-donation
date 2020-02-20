@@ -21,7 +21,7 @@ public class Donation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer quantity;
-    @ManyToMany(mappedBy = "donations",fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Category> categories = new ArrayList<>();
     @ManyToOne(optional = false)
     private Institution institution;

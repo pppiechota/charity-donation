@@ -4,9 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
-import java.util.List;
 
 @Entity
 @Table(name = "categories")
@@ -16,8 +14,6 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @ManyToMany
-    private List<Donation> donations;
 
     public Long getId() {
         return id;
@@ -33,13 +29,5 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Donation> getDonations() {
-        return donations;
-    }
-
-    public void setDonations(List<Donation> donations) {
-        this.donations = donations;
     }
 }
