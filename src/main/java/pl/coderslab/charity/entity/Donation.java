@@ -1,5 +1,7 @@
 package pl.coderslab.charity.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -28,8 +30,10 @@ public class Donation {
     private String street;
     private String city;
     private String zipCode;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
-    private LocalTime pickUpTIme;
+//    @DateTimeFormat(pattern = "h:mm a")
+    private LocalTime pickUpTime;
     private String pickUpComment;
 
     public Long getId() {
@@ -96,12 +100,12 @@ public class Donation {
         this.pickUpDate = pickUpDate;
     }
 
-    public LocalTime getPickUpTIme() {
-        return pickUpTIme;
+    public LocalTime getPickUpTime() {
+        return pickUpTime;
     }
 
-    public void setPickUpTIme(LocalTime pickUpTIme) {
-        this.pickUpTIme = pickUpTIme;
+    public void setPickUpTime(LocalTime pickUpTIme) {
+        this.pickUpTime = pickUpTIme;
     }
 
     public String getPickUpComment() {
