@@ -10,6 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -22,6 +26,7 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Min(value = 1)
     private Integer quantity;
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Category> categories = new ArrayList<>();
@@ -29,11 +34,14 @@ public class Donation {
     private Institution institution;
     private String street;
     private String city;
+    @Pattern(regexp = "^[0-9]{2}-[0-9]{3}$")
     private String zipCode;
+    @Future
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
 //    @DateTimeFormat(pattern = "h:mm a")
     private LocalTime pickUpTime;
+    @Size(max = 600)
     private String pickUpComment;
 
     public Long getId() {
