@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
@@ -32,14 +34,18 @@ public class Donation {
     private List<Category> categories = new ArrayList<>();
     @ManyToOne(optional = false)
     private Institution institution;
+    @NotBlank
     private String street;
+    @NotBlank
     private String city;
     @Pattern(regexp = "^[0-9]{2}-[0-9]{3}$")
     private String zipCode;
+    @NotNull
     @Future
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
 //    @DateTimeFormat(pattern = "h:mm a")
+    @NotNull
     private LocalTime pickUpTime;
     @Size(max = 600)
     private String pickUpComment;
