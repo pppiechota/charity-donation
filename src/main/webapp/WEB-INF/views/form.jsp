@@ -74,6 +74,7 @@
                     <label>
                         Liczba 60l worków:
                         <form:input path="quantity"/>
+                        <form:errors path="quantity" cssClass="error" />
 <%--                        <input type="number" name="bags" step="1" min="1" />--%>
                     </label>
                 </div>
@@ -102,6 +103,7 @@
                         </label>
                     </div>
                 </c:forEach>
+                <form:errors path="institution" cssClass="error"/>
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
@@ -118,12 +120,15 @@
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
                             <label> Ulica <form:input path="street"/> </label>
+                            <form:errors path="street" cssClass="error" element="div"/>
                         </div>
                         <div class="form-group form-group--inline">
                             <label> Miasto <form:input path="city"/> </label>
+                            <form:errors path="city" cssClass="error" element="div"/>
                         </div>
                         <div class="form-group form-group--inline">
                             <label> Kod pocztowy <form:input path="zipCode" /> </label>
+                            <form:errors path="zipCode" cssClass="error" element="div"/>
                         </div>
                     </div>
 
@@ -131,16 +136,19 @@
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
                             <label> Data <form:input type="date" path="pickUpDate"/> </label>
+                            <form:errors path="pickUpDate" cssClass="error"/>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label> Godzina <form:input type="time" path="pickUpTime" /> </label>
+                            <form:errors path="pickUpTime" cssClass="error"/>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
                                 <form:textarea path="pickUpComment" rows="5"/>
+                                <form:errors path="pickUpComment" cssClass="error"/>
                             </label>
                         </div>
                     </div>
@@ -161,16 +169,13 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text"
-                                >4 worki ubrań w dobrym stanie dla dzieci</span
-                                >
+<%--                                to nie działa, bo w tym momencie nie ma wypełnionej donacji przekazanej--%>
+                                <span class="summary--text">${donation.quantity} worki ubrań w dobrym stanie dla dzieci</span>
                             </li>
 
                             <li>
                                 <span class="icon icon-hand"></span>
-                                <span class="summary--text"
-                                >Dla fundacji "Mam marzenie" w Warszawie</span
-                                >
+                                <span class="summary--text">Dla fundacji "Mam marzenie" w Warszawie</span>
                             </li>
                         </ul>
                     </div>
