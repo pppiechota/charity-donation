@@ -73,7 +73,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <form:input path="quantity"/>
+                        <form:input type="number" path="quantity" />
                         <form:errors path="quantity" cssClass="error" />
 <%--                        <input type="number" name="bags" step="1" min="1" />--%>
                     </label>
@@ -213,5 +213,6 @@
 
 <jsp:include page="footer.jsp"/>
 <script src="<c:url value="/resources/js/app.js"/>"></script>
+<script src="<c:url value="/resources/js/myScripts.js"/>"></script>
 </body>
 </html>
