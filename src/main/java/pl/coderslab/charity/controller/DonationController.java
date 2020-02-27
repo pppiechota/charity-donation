@@ -52,7 +52,7 @@ public class DonationController {
         if (result.hasErrors()){
             return "form";
         }
-        System.out.println("Category: "+donation.getCategories());
+
         donationRepository.save(donation);
         return "form-confirmation";
     }
