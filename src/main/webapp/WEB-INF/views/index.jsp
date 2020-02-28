@@ -35,20 +35,17 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
                 tempora!</p>
         </div>
-
         <div class="stats--item">
             <em>${sumOfDonations}</em>
             <h3>Przekazanych darów</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
         </div>
-
     </div>
 </section>
 
 <section class="steps">
     <h2>Wystarczą 4 proste kroki</h2>
-
     <div class="steps--container">
         <div class="steps--item">
             <span class="icon icon--hands"></span>
@@ -71,8 +68,7 @@
             <p>kurier przyjedzie w dogodnym terminie</p>
         </div>
     </div>
-
-    <a href="#" class="btn btn--large">Załóż konto</a>
+    <a href="<c:url value="/register"/>" class="btn btn--large">Załóż konto</a>
 </section>
 
 <section class="about-us">
