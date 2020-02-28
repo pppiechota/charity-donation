@@ -13,7 +13,18 @@
     <link rel="stylesheet" href="<c:url value="/resources/css/style.css"/>"/>
 </head>
 <body>
-<jsp:include page="header.jsp"/>
+
+<header class="header--main-page">
+    <jsp:include page="header.jsp"/>
+    <div class="slogan container container--90">
+        <div class="slogan--item">
+            <h1>
+                Zacznij pomagać!<br/>
+                Oddaj niechciane rzeczy w zaufane ręce
+            </h1>
+        </div>
+    </div>
+</header>
 
 <section class="stats">
     <div class="container container--85">
@@ -77,7 +88,6 @@
 
 <section class="help">
     <h2>Komu pomagamy?</h2>
-
     <!-- SLIDE 1 -->
     <div class="help--slides active" data-id="1">
         <p>W naszej bazie znajdziesz listę zweryfikowanych Fundacji, z którymi współpracujemy.
@@ -97,9 +107,10 @@
             </li>
         </ul>
     </div>
-
 </section>
+
 <jsp:include page="footer.jsp"/>
+
 <script src="<c:url value="/resources/js/app.js"/>"></script>
 </body>
 </html>
