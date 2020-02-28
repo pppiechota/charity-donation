@@ -17,12 +17,17 @@ public class LoginController {
         return "form";
     }
 
-    @RequestMapping("/403")
+    @RequestMapping("/logout")
     public String logout() {
-        return "logout";
+        return "redirect:/";
     }
 
-    @RequestMapping("/register")
+    @RequestMapping("/403")
+    public String accessDenied() {
+        return "403";
+    }
+
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String register() {
         return "register";
     }

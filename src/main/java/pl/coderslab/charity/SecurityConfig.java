@@ -13,26 +13,19 @@ import pl.coderslab.charity.service.SpringDataUserDetailsService;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    @Override
-//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("user1").password("{noop}user123").roles("USER")
-//                .and()
-//                .withUser("admin1").password("{noop}admin123").roles("ADMIN");
-//    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/donation").authenticated()
-                .and().formLogin().loginPage("/login")
+                .and()
+                .formLogin().loginPage("/login")
                 .usernameParameter("username")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/donation")
                 .failureUrl("/login?error=true")
                 .and()
                 .logout()
-                .logoutSuccessUrl("/")
+                .logoutSuccessUrl("/logout")
                 .and()
                 .exceptionHandling()
                 .accessDeniedPage("/403");
