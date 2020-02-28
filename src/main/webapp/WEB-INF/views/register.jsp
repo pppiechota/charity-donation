@@ -30,7 +30,7 @@
 
 <section class="login-page">
     <h2>Załóż konto</h2>
-    <form>
+    <form method="post" action="/register">
         <div class="form-group">
             <input type="email" name="email" placeholder="Email"/>
         </div>

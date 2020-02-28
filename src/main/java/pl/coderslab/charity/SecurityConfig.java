@@ -15,20 +15,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.csrf().disable()
+                .authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/donation").authenticated()
                 .and()
-                .formLogin().loginPage("/login")
+                .formLogin()
+                .loginPage("/login")
                 .usernameParameter("username")
                 .defaultSuccessUrl("/donation")
-                .failureUrl("/login?error=true")
+                .failureUrl("/login?error")
                 .and()
                 .logout()
-                .logoutSuccessUrl("/logout")
-                .and()
-                .exceptionHandling()
-                .accessDeniedPage("/403");
+                .logoutSuccessUrl("/login?logout");
+//                .and()
+//                .exceptionHandling()
+//                .accessDeniedPage("/403");
     }
 
     @Bean

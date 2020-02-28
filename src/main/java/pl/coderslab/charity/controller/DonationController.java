@@ -18,7 +18,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-@Secured("ROLE_USER")
+//@Secured("ROLE_USER")
 public class DonationController {
 
     private final CategoryRepository categoryRepository;
