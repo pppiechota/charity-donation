@@ -43,5 +43,5 @@ document.addEventListener("DOMContentLoaded", function () {
         summaryDiv.querySelector('#pickup-time').innerHTML = address[4].value;
         summaryDiv.querySelector('#pickup-comment').innerHTML
             = form.querySelector("div[data-step='4'] textarea").value;
-    })
+    });
 });
