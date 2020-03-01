@@ -19,7 +19,6 @@
             <li><a href="<c:url value="/login"/>">Zaloguj</a></li>
             <li class="highlighted"><a href="<c:url value="/register"/>">Załóż konto</a></li>
         </ul>
-
         <ul>
             <li><a href="<c:url value="/"/>" class="btn btn--without-border active">Start</a></li>
             <li><a href="index.html#steps" class="btn btn--without-border">O co chodzi?</a></li>

@@ -2,6 +2,8 @@ package pl.coderslab.charity.entity;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -11,7 +13,10 @@ public class User {
     private Long id;
     @Column(nullable = false, unique = true, length = 60)
     private String username;
+    @NotNull
+    @NotBlank
     private String password;
+    @NotNull
     @Email
     private String email;
     private int enabled;

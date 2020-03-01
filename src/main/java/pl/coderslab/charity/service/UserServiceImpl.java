@@ -2,6 +2,7 @@ package pl.coderslab.charity.service;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.coderslab.charity.entity.Role;
 import pl.coderslab.charity.entity.User;
 import pl.coderslab.charity.repository.RoleRepository;
@@ -24,6 +25,22 @@ public class UserServiceImpl implements UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    @Transactional
+    @Override
+    public User registerNewUserAccount(User user) throws EmailExistsException{
+        if (emailExist(user.getEmail())) {
+            throw new EmailExistsException(
+                    "Istnieje już konto dla adresu: " +  user.getEmail());
+        }
+        User newUser = new User();
+        newUser.setUsername(user.getUsername());
+        newUser.setEmail(user.getEmail());
+        newUser.setPassword(passwordEncoder.encode(user.getPassword()));
+        newUser.setEnabled(1);
+        Role userRole = roleRepository.findByName("ROLE_USER");
+        newUser.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        return userRepository.save(newUser);
+    }
 
     @Override
     public User findByUserName(String name) {
@@ -35,12 +52,8 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(email);
     }
 
-    @Override
-    public void saveUser(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setEnabled(1);
-        Role userRole = roleRepository.findByName("ROLE_USER");
-        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-        userRepository.save(user);
+    private boolean emailExist(String email) {
+        User user = userRepository.findByEmail(email);
+        return user != null;
     }
 }
