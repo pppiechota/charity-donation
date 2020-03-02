@@ -18,7 +18,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/donation").authenticated()
+                .antMatchers("/donation").hasAnyRole("USER", "ADMIN")
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .and()
                 .formLogin()
                 .loginPage("/login")
@@ -27,10 +28,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login?error")
                 .and()
                 .logout()
-                .logoutSuccessUrl("/login?logout");
-//                .and()
-//                .exceptionHandling()
-//                .accessDeniedPage("/403");
+                .logoutSuccessUrl("/login?logout")
+                .and()
+                .exceptionHandling()
+                .accessDeniedPage("/403");
     }
 
     @Bean
