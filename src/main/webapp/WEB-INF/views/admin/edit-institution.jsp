@@ -16,17 +16,19 @@
 </head>
 <body>
 <div class="container">
-    <form:form modelAttribute="institution" method="post" action="/admin/add-new">
+    <h1 class="h3 mb-2 text-gray-800">Czy chcesz zmienić dane poniższej instytucji?</h1>
+    <form:form modelAttribute="institution" method="post" action="/admin/edit">
         <div class="form-group">
-            <label for="inputName">Nazwa instytucji</label>
-            <form:input path="name" class="form-control" id="inputName"/>
+            <label for="institutionName">Nazwa instytucji</label>
+            <form:input path="name" class="form-control" id="institutionName"/>
             <form:errors path="name"/>
         </div>
         <div class="form-group">
-            <label for="inputDesc">Krótki opis charakteru działań organizacji</label>
-            <form:input path="description" class="form-control" id="inputDesc"/>
+            <label for="institutionDesc">Opis organizacji</label>
+            <form:input path="description" class="form-control" id="institutionDesc"/>
             <form:errors path="description"/>
         </div>
+        <form:hidden path="id"/>
         <button type="submit" class="btn btn-primary">Submit</button>
         <a href="<c:url value="/admin/institutions"/>"><button class="btn btn-primary">Powrót</button></a>
 

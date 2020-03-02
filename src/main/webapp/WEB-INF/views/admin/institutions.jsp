@@ -270,7 +270,7 @@
                                         <td>${institution.name}</td>
                                         <td>${institution.description}</td>
                                         <td>${institution.id}</td>
-                                        <td><a href="<c:url value="/admin/edit"/>" class="btn btn-info btn-icon-split">
+                                        <td><a href="<c:url value="/admin/edit?id=${institution.id}"/>" class="btn btn-info btn-icon-split">
                                             <span class="icon text-white-50"><i class="fas fa-info-circle"></i></span>
                                             <span class="text">EDYTUJ</span>
                                         </a></td>
@@ -298,7 +298,7 @@
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Your Website 2019</span>
+                    <span>Copyright &copy; Piotr Piechota 2020</span>
                 </div>
             </div>
         </footer>
@@ -329,7 +329,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="<c:url value="/logout">">Logout</a>
             </div>
         </div>
     </div>

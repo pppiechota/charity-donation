@@ -3,6 +3,7 @@ package pl.coderslab.charity.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +13,7 @@ import pl.coderslab.charity.service.UserService;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
@@ -58,6 +60,22 @@ public class AdminController {
         if (institutionRepository.existsById((long) id)) {
             institutionRepository.deleteById((long) id);
         }
+        return "redirect:/admin/institutions";
+    }
+
+    @RequestMapping(value = "/edit")
+    public String editInstitution(@RequestParam Long id, Model model) {
+        Institution institution = institutionRepository.findById(id).orElse(null);
+        model.addAttribute("institution", institution);
+        return "admin/edit-institution";
+    }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.POST)
+    public String performEditInstitution(@Valid Institution institution, BindingResult result) {
+        if (result.hasErrors()){
+            return "admin/edit-institution";
+        }
+        institutionRepository.save(institution);
         return "redirect:/admin/institutions";
     }
 }
