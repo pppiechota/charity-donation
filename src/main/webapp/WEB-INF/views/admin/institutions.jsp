@@ -236,7 +236,7 @@
 
                 <!-- Page Heading -->
                 <h1 class="h3 mb-2 text-gray-800">Instytucje</h1>
-                <p class="mb-4">Dodaj nową: <a href="<c:url value="/admin/add-new"/>">KLIK</a> </p>
+                <p class="mb-4">Dodaj nową: <a href="<c:url value="/admin/add-new"/>">KLIK</a></p>
 
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
@@ -270,8 +270,16 @@
                                         <td>${institution.name}</td>
                                         <td>${institution.description}</td>
                                         <td>${institution.id}</td>
-                                        <td><a href="">KLIK</a></td>
-                                        <td><a href="">KLIK</a></td>
+                                        <td><a href="<c:url value="/admin/edit"/>" class="btn btn-info btn-icon-split">
+                                            <span class="icon text-white-50"><i class="fas fa-info-circle"></i></span>
+                                            <span class="text">EDYTUJ</span>
+                                        </a></td>
+                                        <td><form method="post" action="<c:url value="/admin/delete?id=${institution.id}"/>">
+                                                <button type="submit" class="btn btn-danger btn-icon-split">
+                                                    <span class="icon text-white-50"><i class="fas fa-trash"></i></span>
+                                                    <span class="text">USUŃ</span>
+                                                </button>
+                                        </form></td>
                                     </tr>
                                 </c:forEach>
                                 </tbody>

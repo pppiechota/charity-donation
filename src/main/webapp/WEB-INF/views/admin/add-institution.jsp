@@ -28,6 +28,8 @@
             <form:errors path="description"/>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="<c:url value="/admin/institutions"/>"><button class="btn btn-primary">Powrót</button></a>
+
     </form:form>
 </div>
 
